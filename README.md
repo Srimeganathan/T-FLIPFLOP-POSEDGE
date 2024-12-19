@@ -31,12 +31,36 @@ From the above characteristic table, we can directly write the next state equati
 /* write all the steps invloved */
 
 **PROGRAM**
-
+```
+module rom(addr, data_out);
+ input [2:0] addr;
+ output [7:0] data_out;
+reg [7:0] data_out;
+reg [7:0]mem [0:7];
+initial
+begin
+mem[0]=8'b00000000;
+mem[1]=8'b00000010;
+mem[2]=8'b00000100;
+mem[3]=8'b00001000;
+mem[4]=8'b00010000;
+mem[5]=8'b00100000;
+mem[6]=8'b01000000;
+mem[7]=8'b10000000;
+end
+always@(addr) begin
+data_out=mem[addr];
+end
+endmodule
+```
 /* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
 */
 
 **RTL LOGIC FOR FLIPFLOPS**
+![Screenshot (8)](https://github.com/user-attachments/assets/864d7875-cc10-4bd9-ad3d-e535a5cbb20c)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![image](https://github.com/user-attachments/assets/c907a193-93b2-41ff-b849-6989ca4359b5)
 
 **RESULTS**
+Thus the OUTPUT’s of ROM and RAM are verified by synthesizing and simulating theVERILOG code
